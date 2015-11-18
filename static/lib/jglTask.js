@@ -233,13 +233,13 @@ function initScreen() {
 	screen.startTime = jglGetSecs(); // start time, used for random state
 	screen.numTasks = 0; // number of tasks
 	var params = getURLParams();
-	if (! isEmpty(params)) {
-		screen.assignmentID = params[0].substring(params[0].indexOf('='));
-		screen.hitID = params[1].substring(params[1].indexOf('='));
-		screen.workerID = params[2].substring(params[2].indexOf('='));
-	} else {
-		console.error("init Screen: could not get assignmentID, hitID, or workerID");
-	}
+	// if (! isEmpty(params)) {
+	// 	screen.assignmentID = params[0].substring(params[0].indexOf('='));
+	// 	screen.hitID = params[1].substring(params[1].indexOf('='));
+	// 	screen.workerID = params[2].substring(params[2].indexOf('='));
+	// } else {
+	// 	console.error("init Screen: could not get assignmentID, hitID, or workerID");
+	// }
 	
 	screen.userHitEsc = 0;
 
