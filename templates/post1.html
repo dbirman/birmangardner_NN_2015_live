@@ -1,0 +1,63 @@
+<div id="container-questionnaire">
+    <h1>Quick Survey</h1>
+
+    <hr>
+
+    <p>You are are almost finished!</p>
+
+    <div class="instructions well">
+
+        <form id="postquiz" action="debrief" method="post">
+
+ <!-- beginning of a question -->
+            <div class="row question">
+                <div class="col-md-8">
+								  What rule did you use to make your decisions? Please provide as much detail as possible!
+								</div>
+                <div class="col-md-4">
+                	<textarea id="observation" style="width: 400px; height: 100px;"></textarea>
+								</div>
+            </div>
+            <!-- end of a question -->
+				</form>
+		</div>
+
+		<hr>
+
+    <div class="instructionsnav">
+        <div class="row">
+            <div class="col-xs-2">
+            </div>
+            <div class="col-xs-7">
+            </div>
+            <div class="col-xs-3">
+                <button type="button" id="next" value="next" class="btn btn-primary btn-lg continue" onclick="postSurvey();">
+                    Continue <span class="glyphicon glyphicon-arrow-right"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+    function postSurvey() {
+			var full = true;
+      $(":input").not("#next").each(function() {
+				if (! $(this).val()) {
+					$(this).css("background-color", "red");
+					full = false;
+				  return;
+				}
+			});
+			if (full) {
+                jglData.postSurvey.ruleCat = $("#observation").val().replace(/\n/g, ' ');
+                nextPhase();
+			} else {
+				window.scrollTo(0,0);
+			}
+		}
+
+		$(":input").not("#next").click(function() {
+			$(this).css("background-color", "white");
+		});
+		</script>
+
+</div>
