@@ -4,7 +4,7 @@ function cohcon() {
 
   window.myscreen = initScreen();
 
-  window.myscreen.ppi = 80;
+  window.myscreen.ppi = 100;
 
 	var instructionPages = [ // add as a list as many pages as you like
 		"instructions/instruct-1.html",
