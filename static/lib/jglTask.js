@@ -85,7 +85,6 @@ function initData() {
  * @memberof module:jglTask
  */
 var keyResponse = function(e) {
-	console.log('gotkey')
 	for (var i = 0;i<task.length;i++) { //cycle through tasks
 		if (task[i][tnum].thistrial.gotResponse == 0 && task[i][tnum].getResponse[task[i][tnum].thistrial.thisseg] == 1) {
 			task[i][tnum].thistrial.gotResponse = 1;
