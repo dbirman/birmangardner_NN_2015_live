@@ -205,14 +205,16 @@ var startTrialCallback = function(task, myscreen) {
 var getResponseCallback = function(task, myscreen) {
 	jumpSegment(task,0);
 	
-	if (jglData.keys[jglData.keys.length - 1].keyCode == 32) {
+	stimulus.gotResp = task.thistrial.match;
+
+	/*if (jglData.keys[jglData.keys.length - 1].keyCode == 32) {
 		jglData.responses[jglData.responses.length-1] = 1;
 		if (task.thistrial.match==1) {
 			stimulus.gotResp = 1;
 		} else {
 			stimulus.gotResp = -1;
 		}
-	}
+	}*/
 	return [task, myscreen];
 }
 
@@ -250,7 +252,7 @@ var screenUpdateCallback = function(task, myscreen) {
 
 	switch (task.thistrial.thisseg) {
 		case segs.wait:
-			if (task.thistrial.getready) {upText('Get Ready!','#ffffff');}
+			if (task.thistrial.getready) {upText('Ready!','#ffffff');}
 			break;
 		case segs.fixation:
 			upFix('#ffffff');
@@ -273,15 +275,15 @@ var screenUpdateCallback = function(task, myscreen) {
 		case segs.fback:
 			switch (stimulus.gotResp) {
 				case -1: // incorrect
-					upFix('#ff0000');
+					upFix('#ffffff');
 					upCorrectText();
 					break;
 				case 1: // incorrect
-					upFix('#00ff00');
+					upFix('#ffffff');
 					upCorrectText();
 					break;
 				case 0:
-					upFix('#000000');
+					upFix('#ffffff');
 					upCorrectText();
 					break;
 			}
@@ -294,19 +296,19 @@ var screenUpdateCallback = function(task, myscreen) {
 
 function upCorrectText() {	
 	if (stimulus.gotResp==-1) {
-		upText('Wrong','#ff0000');
+		upText('bug','#ffffff');
 	} else if (stimulus.gotResp==1) {
-		upText('Correct','#00ff00');
+		upText('CLAP','#ffffff');
 	} else if (stimulus.gotResp==0) {
-		upText('Failed to Respond','#ffffff');
+		upText('NO   CLAP','#ffffff');
 	}
 }
 
 
 function upNowRespondText() {	
 	jglTextSet('Arial',1,'#ffff00',0,0);
-	jglTextDraw('Respond Now',14 * - .25,-2.75);
-	jglTextDraw('Press Space - or Do Nothing',27 * - .25,-1.75);
+	jglTextDraw('Respond',14 * - .25,-2.75);
+	//jglTextDraw('Press Space - or Do Nothing',27 * - .25,-1.75);
 }
 
 function upText(text, color) {
